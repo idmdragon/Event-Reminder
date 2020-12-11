@@ -9,7 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#32AC71</color>
     <color name="blue">#3367D5</color>
-    <color name="gray">#566E7A</color>
+    <color name="gray">#999999</color>
     <color name="pink">#E63360</color>
+    <color name="pinky">#E63360</color>
+    <color name="abu">#BEBEBE</color>
 
 </resources>
