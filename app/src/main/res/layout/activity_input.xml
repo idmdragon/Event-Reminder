@@ -10,7 +10,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ilTextInputLayout"
+        android:id="@+id/tfetInputEventName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,135 +26,215 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ilTextInputLayout1"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            app:endIconDrawable="@drawable/ic_date"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:endIconMode="custom"
+            app:endIconTint="@color/abu"
+            tools:layout_editor_absoluteX="24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etInputTanggalEvent"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Time"
+                android:textSize="14sp"
+
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ilTextInputLayout4"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            app:endIconDrawable="@drawable/ic_clock"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:endIconMode="custom"
+            app:endIconTint="@color/abu"
+            tools:layout_editor_absoluteX="24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etInputWaktuEvent"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Time"
+                android:textSize="14sp"
+
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ilTextInputLayout3"
+        android:id="@+id/ilTextInputLayout5"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        app:endIconDrawable="@drawable/ic_clock"
+        app:endIconDrawable="@drawable/ic_date"
+        app:endIconTint="@color/abu"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"   app:endIconMode="custom"
+        android:layout_marginBottom="16dp"
+        app:endIconMode="custom"
 
         tools:layout_editor_absoluteX="24dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etInputTanggal"
+            android:id="@+id/etInputTanggalReminder"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Pick Event Date"
+            android:hint="Reminder Date"
             android:textSize="14sp"
 
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-
-
-        android:orientation="horizontal"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilTextInputLayout6"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
+        app:endIconDrawable="@drawable/ic_clock"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="16dp"   app:endIconMode="custom"
+        app:endIconTint="@color/abu"
         tools:layout_editor_absoluteX="24dp">
 
-        <LinearLayout
-            android:id="@+id/btnEventDate"
-            android:background="@drawable/backgrounddate"
-            android:layout_width="wrap_content"
-            android:paddingTop="16dp"
-            android:paddingLeft="16dp"
-            android:paddingBottom="16dp"
-            android:paddingEnd="16dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etInputWaktuReminder"
 
-            android:layout_marginEnd="8dp"
-            android:layout_height="wrap_content">
-            <TextView
-
-                android:id="@+id/tvPickEventDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pick Event Date"/>
-            <ImageView
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/vector"
-                app:tint="@color/abu" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnEventTime"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/backgrounddate"
-            android:padding="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tvPickEventTime"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pick Event Time"/>
-            <ImageView
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/vector"
-                app:tint="@color/abu" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:padding="16dp"
-        android:background="@drawable/backgrounddate"
-        android:id="@+id/InputCalender"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        tools:layout_editor_absoluteX="24dp">
-
-        <TextView
-            android:id="@+id/tvReminderDate"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pick Reminder Date"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/vector"
-            app:tint="@color/abu" />
-    </LinearLayout>
+            android:hint="Event Time"
+            android:textSize="14sp"
 
-    <LinearLayout
-        android:padding="16dp"
-        android:background="@drawable/backgrounddate"
-        android:id="@+id/InputRem"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        tools:layout_editor_absoluteX="24dp">
+            android:inputType="text" />
 
-        <TextView
-            android:id="@+id/tvReminderTime"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick Reminder Time"/>
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    <LinearLayout-->
 
 
-        <ImageView
-            android:id="@+id/btn_date"
-            android:layout_width="wrap_content"
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        tools:layout_editor_absoluteX="24dp">-->
 
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_clock"
-            app:tint="@color/abu" />
-    </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/btnEventDate"-->
+<!--            android:background="@drawable/backgrounddate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingLeft="16dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:paddingEnd="16dp"-->
+
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TextView-->
+
+<!--                android:id="@+id/tvPickEventDate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Pick Event Date"/>-->
+<!--            <ImageView-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_date"-->
+<!--                app:tint="@color/abu" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/btnEventTime"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:background="@drawable/backgrounddate"-->
+<!--            android:padding="16dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TextView-->
+<!--                android:id="@+id/tvPickEventTime"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Pick Event Time"/>-->
+<!--            <ImageView-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_date"-->
+<!--                app:tint="@color/abu" />-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:padding="16dp"-->
+<!--        android:background="@drawable/backgrounddate"-->
+<!--        android:id="@+id/InputCalender"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        tools:layout_editor_absoluteX="24dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvReminderDate"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Pick Reminder Date"/>-->
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_date"-->
+<!--            app:tint="@color/abu" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:padding="16dp"-->
+<!--        android:background="@drawable/backgrounddate"-->
+<!--        android:id="@+id/InputRem"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        tools:layout_editor_absoluteX="24dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvReminderTime"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Pick Reminder Time"/>-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/btn_date"-->
+<!--            android:layout_width="wrap_content"-->
+
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_clock"-->
+<!--            app:tint="@color/abu" />-->
+<!--    </LinearLayout>-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilTextInputLayout2"
@@ -162,13 +242,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+
         tools:layout_editor_absoluteX="24dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etAdditionalNote"
-
+            android:gravity="top"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:hint="Additional Note"
             android:textSize="14sp"
             android:inputType="text" />
