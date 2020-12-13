@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.eventreminder.db.EventDao
+import com.example.eventreminder.db.EventRoomDatabase
+import com.example.eventreminder.model.Event
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -16,6 +19,9 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
     private var isEdit = false
     private var event: Event? = null
     private var position: Int = 0
+    private var isUpdate = false
+    private lateinit var database: EventRoomDatabase
+    private lateinit var dao: EventDao
     companion object {
         const val EXTRA_NOTE = "extra_note"
         const val EXTRA_POSITION = "extra_position"
@@ -37,14 +43,12 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var etInputTanggal : TextInputEditText
 
-    var dateMonthList = arrayOf("Jan", "Feb", "Mar",
-            "Apr", "May", "Jun", "Jul", "Aug",
-            "Sep", "Oct", "Nov", "Dec")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input)
 
+        database = EventRoomDatabase.getDatabase(applicationContext)
+        dao = database.getEventDao()
 
         etInputTanggal = findViewById(R.id.etInputTanggalEvent)
         supportActionBar?.title = "Create Reminder"
@@ -69,7 +73,6 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
         if (isEdit) {
             actionBarTitle = "Edit Reminder"
             btnTitle = "Update"
-
             event?.let {
                 etInputEventName.setText(it.eventName)
                 etInputTanggalEvent.setText(it.eventDate)
@@ -141,12 +144,6 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
             pickerReminderDate.show(supportFragmentManager, pickerReminderDate.toString())
             pickerReminderDate.addOnPositiveButtonClickListener {
                 etInputTanggalReminder.setText(pickerReminderDate.headerText)
-                dateRawFormat = pickerReminderDate.headerText
-                dateFormatted = dateRawFormat.split(" ") as MutableList<String>
-                dateFormatted.set(0, dateMonthList.indexOf(dateFormatted[0]).toString())
-                dateFormatted.set(1, dateFormatted[1].replace(",", ""))
-                dateFormatted.set(2, dateFormatted[2])
-
             }
 //            etInputTanggalReminder.setText("2020-12-13")
         }
@@ -163,28 +160,49 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         alarmReceiver = AlarmReceiver()
-
-
-
-
         btn_save.setOnClickListener {
 //            Toast.makeText(applicationContext, etInputTanggalReminder.text.toString(),Toast.LENGTH_LONG).show()
-            val date = dateFormatted.toString()
-            val time = "21:04"
-            val message = "2020-12-13"
+            val name = etInputEventName.text.toString()
+//            val  eventTime = "a".toString()
+//            val  eventDate = "b".toString()
+//            val  reminderDate = "c".toString()
+//            val  reminderTime = "d".toString()
+            val  eventTime = etInputWaktuEvent.text.toString()
+            val  eventDate = etInputTanggalEvent.text.toString()
+            val  reminderDate = etInputTanggalReminder.text.toString()
+            val  reminderTime = etInputWaktuReminder.text.toString()
+            val  additionalNote = etAdditionalNote.text.toString()
+//            val date = dateFormatted.toString()
+//            val time = "21:04"
+//            val message = "2020-12-13"
+            if (name.isEmpty() && eventDate.isEmpty() && eventTime.isEmpty() && reminderDate.isEmpty() && reminderTime.isEmpty() && additionalNote.isEmpty()){
+                Toast.makeText(applicationContext, "Event cannot be empty", Toast.LENGTH_SHORT).show()
+            } else {
+                if (isUpdate){
+                    saveNote(Event(id = event!!.id, eventName=name, eventDate=eventDate, eventTime=eventTime, reminderDate=reminderDate, reminderTime=reminderTime, keterangan=additionalNote))
+                }
+                else{
+                    saveNote(Event(eventName = name, eventDate=eventDate, eventTime=eventTime, reminderDate=reminderDate, reminderTime=reminderTime, keterangan=additionalNote))
+                }
+            }
 
 
-
-            alarmReceiver.setOneTimeAlarm(this, AlarmReceiver.TYPE_ONE_TIME,
-                    date,
-                    time,
-                    message)
+//            alarmReceiver.setOneTimeAlarm(this, AlarmReceiver.TYPE_ONE_TIME,
+//                date,
+//                time,
+//                message)
 //                etInputTanggalReminder.text.toString(),
 //                etInputWaktuReminder.text.toString(),
         }
-
-
-
+    }
+    private fun saveNote(event: Event){
+        if (dao.getById(event.id).isEmpty()){
+            dao.insert(event)
+        }
+        else{
+            dao.update(event)
+        }
+        Toast.makeText(applicationContext, "Note saved", Toast.LENGTH_SHORT).show()
 
     }
     override fun onSupportNavigateUp(): Boolean {
