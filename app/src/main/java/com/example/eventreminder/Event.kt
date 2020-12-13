@@ -1,5 +1,9 @@
 package com.example.eventreminder
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Event (
         var id : Int?,
         var eventName : String,
@@ -8,5 +12,4 @@ data class Event (
         var reminderDate : String,
         var reminderTime : String,
         var keterangan : String
-){
-}
+) : Parcelable

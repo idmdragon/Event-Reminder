@@ -1,13 +1,17 @@
 package com.example.eventreminder
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_name.*
+import kotlinx.android.synthetic.main.item_name.view.*
 
-class EventAdapter(var listEvent : List<Event>):RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
+class EventAdapter(var listEvent : List<Event>, val activity: Activity):RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -33,15 +37,16 @@ class EventAdapter(var listEvent : List<Event>):RecyclerView.Adapter<EventAdapte
                 tvKeterangan.text = event.keterangan
                 tvTanggal.text =  event.eventDate
                 tvWaktu.text = event.eventTime
-//                cv_item_note.setOnClickListener(CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
-//                    override fun onItemClicked(view: View, position: Int) {
-//                        val intent = Intent(activity, NoteAddUpdateActivity::class.java)
-//                        intent.putExtra(NoteAddUpdateActivity.EXTRA_POSITION, position)
-//                        intent.putExtra(NoteAddUpdateActivity.EXTRA_NOTE, note)
-//                        activity.startActivityForResult(intent, NoteAddUpdateActivity.REQUEST_UPDATE)
-//                    }
-//                }))
+                linearRootAtas.setOnClickListener(CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
+                    override fun onItemClicked(view: View, position: Int) {
+                        val intent = Intent(activity, InputActivity::class.java)
+                        intent.putExtra(InputActivity.EXTRA_POSITION, position)
+                        intent.putExtra(InputActivity.EXTRA_NOTE, event)
+                        activity.startActivityForResult(intent, InputActivity.REQUEST_UPDATE)
+                    }
+                }))
             }
         }
     }
 }
+
