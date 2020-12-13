@@ -66,7 +66,7 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
         val btnTitle: String
 
         if (isEdit) {
-            actionBarTitle = "Ubah"
+            actionBarTitle = "Edit"
             btnTitle = "Update"
 
             event?.let {
@@ -78,12 +78,13 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
                 etAdditionalNote.setText(it.keterangan)
             }
         } else {
-            actionBarTitle = "Tambah"
-            btnTitle = "Simpan"
+            actionBarTitle = "Create Reminder"
+            btnTitle = "Save"
         }
 
         supportActionBar?.title = actionBarTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         btn_save.text = btnTitle
         btn_save.setOnClickListener(this)
@@ -112,7 +113,10 @@ class InputActivity : AppCompatActivity(), View.OnClickListener {
 
         }
     }
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
     override fun onClick(p0: View?) {
         if (position == 0) {
             Toast.makeText(this, "Halo" , Toast.LENGTH_LONG).show()

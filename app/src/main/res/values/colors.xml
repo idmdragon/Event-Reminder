@@ -13,5 +13,8 @@
     <color name="pink">#E63360</color>
     <color name="pinky">#E63360</color>
     <color name="abu">#BEBEBE</color>
+    <color name="list_color3">#3367D5</color>
+    <color name="list_color2">#566E7A</color>
+    <color name="list_color1">#32AC71</color>
 
 </resources>

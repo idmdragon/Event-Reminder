@@ -43,40 +43,83 @@
                     tools:text="Webinar Poros" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/vector"/>
-                    <TextView
-                        android:id="@+id/tvTanggal"
-                        android:layout_marginStart="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="Feb, 20"/>
-                    <TextView
-                        android:layout_marginStart="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="|"/>
-                    <TextView
-                        android:id="@+id/tvWaktu"
-                        android:layout_marginStart="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="01 : 55 PM"/>
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/vector"/>
+                        <TextView
+                            android:id="@+id/tvTanggal"
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="Feb, 20"/>
+                        <TextView
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="|"/>
+                        <TextView
+                            android:id="@+id/tvWaktu"
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="01 : 55"/>
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_notif"/>
+                        <TextView
+                            android:id="@+id/tvTanggalReminder"
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="Feb, 20"/>
+                        <TextView
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="|"/>
+                        <TextView
+                            android:id="@+id/tvWaktuReminder"
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="01 : 55"/>
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -86,14 +129,15 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:backgroundTint="@color/white"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/group"/>
+                android:layout_marginTop="8dp"
+                android:src="@drawable/arrow_right"/>
 
         </LinearLayout>
 
 
             <LinearLayout
-                android:visibility="visible"
+                android:id="@+id/isiLinearLayout"
+                android:visibility="gone"
                 android:background="@drawable/bg_rv"
                 android:backgroundTint="@color/white"
                 android:layout_gravity="bottom"
